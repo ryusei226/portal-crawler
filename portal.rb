@@ -1,8 +1,6 @@
 require File.expand_path('../base.rb', __FILE__)
 
 class Portal < Base
-  include Capybara::DSL
-
   def login
     @session.visit ('http://portal10.mars.kanazawa-it.ac.jp/portal/student')
     @session.fill_in 'uid', with: @conf['portal']['id']

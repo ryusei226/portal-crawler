@@ -1,8 +1,6 @@
 require File.expand_path('../base.rb', __FILE__)
 
 class Library < Base
-  include Capybara::DSL
-
   def login
     @session.visit('http://linkit.kanazawa-it.ac.jp/linusnc_jlne3010.html')
     @session.fill_in 'riyousha_no_tx', with: @conf['library']['id']

@@ -4,6 +4,8 @@ require 'capybara/poltergeist'
 require 'yaml'
 
 class Base
+  include Capybara::DSL
+
   def initialize
     @conf = YAML.load(open('config.yml').read)
     Capybara.current_driver = :poltergeist
@@ -33,7 +35,7 @@ class Base
     raise 'not a elem selector' if elem.tag_name != 'table'
     Table.new(elem)
   end
-  
+
   class Table
     def initialize(element)
       @element = element
