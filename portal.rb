@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 require File.expand_path('../base.rb', __FILE__)
 
 # Rubyで心ぴょんぴょんしたい…したくない…？
