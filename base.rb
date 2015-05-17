@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 require 'capybara'
 require 'capybara/dsl'
 require 'capybara/poltergeist'
@@ -12,17 +14,6 @@ class Base
     Capybara.javascript_driver = :poltergeist
     @session = Capybara::Session.new(:poltergeist)
     @session.driver.headers = {'User-Agent' => "Mozilla/5.0 (Macintosh; Intel Mac OS X)"}
-  end
-
-  def top
-    @session.visit self.class.url
-  end
-
-  def login(url, id_input, id, password_input, password, button_name)
-    @session.visit (url)
-    @session.fill_in id_input, with: id
-    @session.fill_in password_input, with: password
-    @session.click_button button_name
   end
 
   def query_with_type(query)

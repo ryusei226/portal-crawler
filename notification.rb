@@ -9,9 +9,9 @@ class SlackNotification
     Slack.configure do |config|
       config.token = @conf['slack']['token']
     end
+  end
 
-    def post(text, username)
-      Slack.chat_postMessage(text: text, channel: '#'+@conf['slack']['room'], username: username)
-    end
+  def post(username, text)
+    Slack.chat_postMessage(text: text, channel: '#'+@conf['slack']['room'], username: username)
   end
 end
