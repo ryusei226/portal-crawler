@@ -6,10 +6,10 @@ require './notification.rb'
 require './library.rb'
 
 task :slack do
-  for i in 1..4 do
-    s = SlackNotification.new
-    p = Portal.new
-    p.login
+  s = SlackNotification.new
+  p = Portal.new
+  p.login
+  for i in 1..7 do
     s.post(p.subject(i), p.content(i))
   end
 end
