@@ -45,4 +45,4 @@ slack:
 * And more...
 
 ## License
-Released under the [MIT Licence](https://github.com/UTF-9/portal-crawler/blob/master/LICENCE)
+Released under the [MIT Licence](https://github.com/UTF-9/portal-crawler/blob/master/LICENSE)
