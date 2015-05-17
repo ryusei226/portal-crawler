@@ -1,4 +1,4 @@
-# Portal Crawler
+# Portal Crawler [![Code Climate](https://codeclimate.com/github/UTF-9/portal-crawler/badges/gpa.svg)](https://codeclimate.com/github/UTF-9/portal-crawler)
 Notify the subject by contact of KIT student portal to Slack  
 
 ## Usage
