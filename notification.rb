@@ -11,7 +11,7 @@ class SlackNotification
     end
   end
 
-  def post(username, text)
-    Slack.chat_postMessage(text: text, channel: '#'+@conf['slack']['room'], username: username)
+  def post(username, room, text)
+    Slack.chat_postMessage(text: text, channel: '#'+room, username: username)
   end
 end
