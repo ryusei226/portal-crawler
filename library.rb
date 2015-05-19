@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
-
 require File.expand_path('../base.rb', __FILE__)
+require 'date'
 
-# tableの要素にtable使うとかまじめにやめてほしい
-# LCの方は少しはマシかと思ったけどやっぱり糞だわ、一回死んで
-# 総括:このシステム使い続ける決定を下したやつ出てこい!!
+#とてもつらい
 
 class Library < Base
 
@@ -18,5 +16,10 @@ class Library < Base
 
   def circulation(num)
     @page.xpath("//table[2]/tbody/tr[#{num}]/td[2]/b/font/p").text.strip
+  end
+
+  def loan_period(date)
+    split = date.split("/")
+    Date.new(split[0].to_i, split[1].to_i, split[2].to_i).jd - Date.today.jd
   end
 end
