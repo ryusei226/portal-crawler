@@ -3,28 +3,35 @@
 KIT学生ポータルの科目別連絡とライブラリセンターの本の貸出数を取得しSlackに通知します
 
 ## Usage
-学生ポータルの科目別連絡を取得:
+学生ポータルの科目別連絡を取得します:
 
 	$ rake portal
 	
-LCの貸出数などを取得
+LCの貸出数などを取得します:
 
 	$ rake library
 	
 ## Install
-このリポジトリをクローン
+このソフトウェアの使用にはGitが必要です:
+	
+	Mac :
+	$ brew install git
+	Linux :
+	$ apt-get install git
+	もしくは
+	$ yum install git 
+
+このリポジトリをクローンし、フォルダに移動します:
 
 	$ git clone git://github.com/UTF-9/portal-crawler.git
-	
-もしくは以下のURLからダウンロード:  
+	$ cd portal-crawler
 
-https://github.com/UTF-9/portal-crawler/archive/master.zip
 	
 必要なgemをインストールします:
 
 	$ bundle install
 
-`config.yml`に以下の要素を書き込む:
+`config.yml`に以下の要素を設定します:
 
 ~~~yaml
 portal:
