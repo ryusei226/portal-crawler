@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 # Todo ネーミングセンスを獲得すること
 
-require './portal.rb'
-require './notification.rb'
-require './library.rb'
+Dir[File.dirname(__FILE__) + '/lib/*.rb'].each {|file| require file }
 
 @conf = YAML.load(open('config.yml').read)
 
