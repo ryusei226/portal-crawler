@@ -3,6 +3,7 @@
 require 'capybara'
 require 'capybara/dsl'
 require 'capybara/poltergeist'
+require 'nokogiri'
 require 'yaml'
 
 class Base

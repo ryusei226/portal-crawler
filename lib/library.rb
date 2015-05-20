@@ -22,25 +22,12 @@ class Library < Base
     path("//table[2]/tbody/tr[#{num}]/td[2]/b/font/p")
   end
 
-  def book_due_date(num)
-    path("//center[3]/table/tbody/tr[#{num}]/td[2]/b")
-  end
-
-  def book_name(num)
-    path("//center[3]/table/tbody/tr[#{num}]/td[4]/b")
-  end
-
-  def book_author(num)
-    path("//center[3]/table/tbody/tr[#{num}]/td[5]/b")
+  def book_info(tr, td)
+    path("//center[3]/table/tbody/tr[#{tr}]/td[#{td}]/b")
   end
 
   def loan_period(num)
-    split = path("//center[3]/table/tbody/tr[#{num}]/td[2]/b").split('/')
+    split = book_info(num, 2).split('/')
     Date.new(split[0].to_i, split[1].to_i, split[2].to_i).jd - Date.today.jd
   end
-
-  def due_date
-
-  end
-
 end

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Todo ネーミングセンスを獲得すること
 
-Dir[File.dirname(__FILE__) + '/lib/*.rb'].each {|file| require file }
+Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
 @conf = YAML.load(open('config.yml').read)
 
@@ -17,9 +17,18 @@ end
 task :library do
   l = Library.new
   l.login
-  cal = "現在貸出中の本は#{p.circulation(1)}冊です\n"
-  cal += "累積貸出数は#{p.circulation(2)}冊です\n"
-  cal += "現在予約中の本は#{p.circulation(3)}冊です\n"
-  cal += "返却期限切れの本は#{p.circulation(4)}冊です"
+  cal = "現在貸出中の本は#{l.circulation(1)}冊です\n"
+  cal += "累積貸出数は#{l.circulation(2)}冊です\n"
+  cal += "現在予約中の本は#{l.circulation(3)}冊です\n"
+  cal += "返却期限切れの本は#{l.circulation(4)}冊です"
   s.post('現在の利用状況', @conf['slack']['library_room'], cal)
+
+  for i in 2..l.circulation(1).to_i+1 do
+    if l.loan_period(i) == 0
+      msg = "本日返却期限の本は#{l.book_info(i, 4)}です"
+    else
+      msg = "「#{l.book_info(i, 4)}」はあと#{l.loan_period(i)}日借りれます"
+    end
+    s.post('返却期限', @conf['slack']['library_room'], msg)
+  end
 end
