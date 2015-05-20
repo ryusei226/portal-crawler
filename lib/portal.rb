@@ -14,11 +14,15 @@ class Portal < Base
     @page = Nokogiri::HTML.parse(@session.html)
   end
 
+  def path(xpath)
+    @page.xpath(xpath).text
+  end
+
   def subject(num)
-    @page.xpath("//table[@class='default'][#{num}]/tbody/tr/th/a").text
+    path("//table[@class='default'][#{num}]/tbody/tr/th/a")
   end
 
   def content(num)
-    @page.xpath("//table[@class='default'][#{num}]/tbody/tr/td/table/tbody/tr/td/ul/li").text
+    path("//table[@class='default'][#{num}]/tbody/tr/td/table/tbody/tr/td/ul/li")
   end
 end

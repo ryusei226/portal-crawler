@@ -7,8 +7,8 @@ require './library.rb'
 
 @conf = YAML.load(open('config.yml').read)
 
+s = SlackNotification.new
 task :portal do
-  s = SlackNotification.new
   p = Portal.new
   p.login
   for i in 1..7 do
@@ -17,12 +17,11 @@ task :portal do
 end
 
 task :library do
-  s = SlackNotification.new
-  p = Library.new
-  p.login
-  msg = "現在貸出中の本は#{p.circulation(1)}冊です\n"
-  msg += "累積貸出数は#{p.circulation(2)}冊です\n"
-  msg += "現在予約中の本は#{p.circulation(3)}冊です\n"
-  msg += "返却期限切れの本は#{p.circulation(4)}冊です"
-  s.post('Library', @conf['slack']['library_room'] , msg)
+  l = Library.new
+  l.login
+  cal = "現在貸出中の本は#{p.circulation(1)}冊です\n"
+  cal += "累積貸出数は#{p.circulation(2)}冊です\n"
+  cal += "現在予約中の本は#{p.circulation(3)}冊です\n"
+  cal += "返却期限切れの本は#{p.circulation(4)}冊です"
+  s.post('現在の利用状況', @conf['slack']['library_room'], cal)
 end

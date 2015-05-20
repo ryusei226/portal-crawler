@@ -6,3 +6,7 @@ gem "slack-api"
 gem "nokogiri"
 gem "capybara"
 gem "poltergeist"
+gem "csv-diff"
+group :test do
+  gem "rspec"
+end
