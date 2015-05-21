@@ -27,7 +27,7 @@ task :library do
     if l.loan_period(i) == 0
       msg = "本日返却期限の本は#{l.book_info(i, 4)}です"
     else
-      msg = "「#{l.book_info(i, 4)}」はあと#{l.loan_period(i)}日借りれます"
+      msg = "「#{l.book_info(i, 4)}」はあと#{l.loan_period(i)}日借りられます"
     end
     s.post('返却期限', @conf['slack']['library_room'], msg)
   end
