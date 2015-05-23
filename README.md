@@ -1,12 +1,19 @@
-# Portal Crawler [![Code Climate](https://codeclimate.com/github/UTF-9/portal-crawler/badges/gpa.svg)](https://codeclimate.com/github/UTF-9/portal-crawler) [![Dependency Status](https://gemnasium.com/UTF-9/portal-crawler.svg)](https://gemnasium.com/UTF-9/portal-crawler)
+# Portal Crawler 
+[![Code Climate](https://codeclimate.com/github/UTF-9/portal-crawler/badges/gpa.svg)](https://codeclimate.com/github/UTF-9/portal-crawler) [![Dependency Status](https://gemnasium.com/UTF-9/portal-crawler.svg)](https://gemnasium.com/UTF-9/portal-crawler)
 
 KIT学生ポータルの科目別連絡とライブラリセンターの本の貸出数を取得しSlackに通知します
 
 ## Usage
+cronで定期的に実行  
+デフォルト:毎日午前8時30分に実行
+
+	$ cd /path/to/portal-crawler
+	$ whenever
+	
 学生ポータルの科目別連絡を取得します:
 
 	$ rake portal
-	
+
 LCの貸出数などを取得します:
 
 	$ rake library
