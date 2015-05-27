@@ -26,6 +26,8 @@ task :library do
   for i in 2..l.circulation(1).to_i+1 do
     if l.loan_period(i) == 0
       msg = "本日返却期限の本は#{l.book_info(i, 4)}です"
+    elsif l.loan_period(i) < 0
+      msg = "#{l.book_info(i, 4)}は返却期限を#{l.loan_period(i)*(-1)}日過ぎています"
     else
       msg = "「#{l.book_info(i, 4)}」はあと#{l.loan_period(i)}日借りられます"
     end
