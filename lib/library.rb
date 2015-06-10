@@ -26,6 +26,10 @@ class Library < Base
     path("//center[3]/table/tbody/tr[#{tr}]/td[#{td}]/b")
   end
 
+  def reserved_book(tr, td)
+    path("//center[3]/cneter/table/tbody/tr[#{tr}]/td[#{td}]/b")
+  end
+
   def loan_period(num)
     split = book_info(num, 2).split('/')
     Date.new(split[0].to_i, split[1].to_i, split[2].to_i).jd - Date.today.jd

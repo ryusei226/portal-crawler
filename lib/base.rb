@@ -27,32 +27,4 @@ class Base
     raise 'not a elem selector' if elem.tag_name != 'table'
     Table.new(elem)
   end
-
-  class Table
-    def initialize(element)
-      @element = element
-    end
-
-    def headers
-      @element.all('th')
-    end
-
-    def rows
-      item_rows = @element.all('tr')
-      item_rows = item_rows.drop(1) if headers.present?
-      item_rows.map { |row| Row.new(row) }
-    end
-
-    class Row
-      def initialize(element)
-        @element = element
-      end
-
-      def tds
-        @element.all('td')
-      end
-
-      alias :cells :tds
-    end
-  end
 end
